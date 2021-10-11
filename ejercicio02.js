@@ -26,6 +26,19 @@ function cubo(x, y, z, color, material, alambrado){
     // add the cube to the scene
     scene.add(cube);
     return(cube);
+function traslacion(){
+        switch(position){
+            var a = 10;
+     case '1':  Cubo[0].position.set(a, 0, 0);
+      break;
+
+     case '2':  Cubo[1].position.set(0, a, 0);
+      break;
+
+     case '3':  Cubo[2].position.set(0, 0, a);
+      break;
+    }
+}
 }
 function init() {
     // create a scene, that will hold all our elements such as objects, cameras and lights.
@@ -43,9 +56,8 @@ function init() {
     scene.add(axes);
  
     let Cubo = [];
-    for (var i = 0; i < 5; i++) {
+    for (var i = 0; i < 3; i++) {
        let nuevoCubo = Cubo.push(cubo(4, 4, 4, 0xFFDD00, 'Physical', false));
-        Cubo[i].position.set(-0, i*4.2+4, 0);
     }
 
     //Luz (requerida para el material MeshLambertMaterial)

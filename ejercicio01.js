@@ -26,6 +26,9 @@ function cubo(x, y, z, color, material, alambrado){
     // add the cube to the scene
     scene.add(cube);
     return(cube);
+function traslacion(obj, deltaX, deltaY, deltaZ){
+    obj.position.set(obj.position.x + deltaX, obj.position.y + deltaY, obj.position.z + deltaZ)
+}
 }
 function init() {
     // create a scene, that will hold all our elements such as objects, cameras and lights.
@@ -41,13 +44,11 @@ function init() {
     // show axes in the screen
     var axes = new THREE.AxesHelper(20);
     scene.add(axes);
-
-    Cubo = [];   // Definir un array unidimensional
-    Cubo.push(cubo(4, 4, 4, 0xFFDD00, 'Physical', false));
-    Cubo.push(cubo(4, 4, 4, 0xFF0000, 'Standard', false));
-
-    Cubo[0].position.set(-4, 9, 0);
-    Cubo[1].position.set(-4, 18, 0);
+ 
+    let Cubo = [];
+    for (var i = 0; i < 3; i++) {
+       let nuevoCubo = Cubo.push(cubo(4, 4, 4, 0xFFDD00, 'Physical', false));
+    }
 
     //Luz (requerida para el material MeshLambertMaterial)
     light = new THREE.PointLight(0xFFFF00); //  Luz proveniente de un punto en el espacio, 
@@ -56,7 +57,7 @@ function init() {
     scene.add( light ); 
 
     // position and point the camera to the center of the scene
-    camera.position.set(-30, 40, 30);
+    camera.position.set(-40, 45, 40);
     camera.lookAt(scene.position);
 
     // add the output of the renderer to the html element
@@ -65,3 +66,7 @@ function init() {
     // render the scene
     renderer.render(scene, camera);
 }
+/* Fuentes:
+    https://developer.mozilla.org/es/docs/Web/CSS/transform
+    https://developer.mozilla.org/es/docs/Web/CSS/transform-function/translate()
+*/
